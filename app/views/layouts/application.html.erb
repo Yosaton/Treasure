@@ -21,8 +21,13 @@
 
   <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+<%if logged_in?%>
+<nav class="navbar navbar-expand-md navbar-light bg-gradient-info" style="background-color:#FF8C00;">
+
+
+<%= image_tag(asset_path('logo.jpg'), width: 42, height: 42)%>
+
+  <a class="navbar-brand" href="#">Trezure</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -30,10 +35,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <%= link_to "Home", listings_path, class:"nav-link"%>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item active">
+        <%= link_to "My profile", user_path(current_user.id), class:"nav-link"%>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,6 +61,7 @@
     </form>
   </div>
 </nav>
+<%end%>
 
 
     <%= yield %>
