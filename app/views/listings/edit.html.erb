@@ -1,0 +1,28 @@
+<h1>Edit Listing</h1>
+ 
+<%= form_with(model: @listing, local: true) do |form| %>
+ 
+
+ 
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :address %><br>
+    <%= form.text_area :address %>
+  </p>
+
+    <p>
+    <%= form.label :price %><br>
+    <%= form.text_area :price %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', listings_path %>

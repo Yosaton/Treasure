@@ -1,16 +1,4 @@
-
-
-
-<h1> Welcome, <%= current_user.first_name %> ! </h1>
-
-<%= image_tag @user.avatar_url.to_s, class:"roundpicture mb-5" %>
-
-
-<%# <%= link_to "Log out", logout_path, method: :delete %> 
-
-<h2> My items for rent: </h2>
-
- <div class= "card-deck" style= "display:flex; justify-content: space-betweem">
+<div class= "card-deck" style= "display:flex; justify-content: space-betweem">
     <%@listings.each do |l|%>
         <div class = "d-inline-block">
             <div class="card border-dark mb-4 mr-2" style="width: 18rem;">
@@ -38,9 +26,24 @@
                                     method: :delete,
                                     data: {confirm: 'Sure?'}%>
                             <%end%>
+
+                            <%if current_user.id != l.user_id %>
+                                <%=link_to "Rent This Item", listing_path(l.id), class: 'btn btn-primary' %>
+                            <%end%>
                     </div>
                 </div>
             </div>
         </div>
-    <%end%>
+<%end%>
 </div>
+
+
+
+
+
+
+
+
+
+
+
