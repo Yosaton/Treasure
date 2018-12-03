@@ -63,4 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-
+gem 'pg_search'
+gem 'carrierwave'
+gem 'rmagick'

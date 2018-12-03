@@ -24,6 +24,8 @@ class UserController < ApplicationController
     end
   
     def show
+      @listings = Listing.all
+      @user = User.find(params[:id])
     end
   
     def update
