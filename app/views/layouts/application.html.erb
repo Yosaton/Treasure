@@ -13,12 +13,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <%# <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> %>
   <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js', 'data-turbolinks-track': 'reload' %>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
+    
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head_tags) %>
   </head>
 
   <body>
@@ -57,22 +58,17 @@
         </div>
       </li>
       <li class="nav-item">
-        <%= link_to "Log out", logout_path, method: :delete %>
+        <%= link_to "Log out", logout_path, method: :delete, class: "nav-link mr-3" %>
       </li>
     </ul>
-
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-
-    <%= form_with url: listings_path, method: :get, local:true, id: "city-search" do |form| %>
-      <%= form.text_field :search, list: "list", id: "main-search"%>
-      <datalist id = "list">
-      </datalist>
-      <%= form.submit%>
+    
+    <%= form_with url: listings_path, method: :get, local:true, class: "form-inline my-2 my-lg-0", id: "city-search" do |form| %>
+      <%= form.text_field :search, list: "list", class: "form-control mr-sm-2", placeholder: "Look for item", id: "main-search"%>
+        <datalist id = "list">
+        </datalist>
+      <%= form.submit "Search", class: "btn btn-outline-success my-2 my-sm-0"%>
     <% end %>
-
+  
     
   </div>
 </nav>
@@ -92,7 +88,7 @@
   function autocomplete(){
     $.ajax({
       url: '/listings',
-      type: 'POST',
+      type: 'GET',
       data: $("#city-search").serialize(), //takes the form data and authenticity toke and converts it into a standard URL
       contentType: 'application/json; charset=utf-8', // this
       dataType: 'json', //specify what type of data you're expecting back from the servers
@@ -100,6 +96,7 @@
           console.log("Something went wrong");
       },
       success: function(data) {
+        console.log(data)
         $("#list").html("");
 
         data.forEach(function(element) {
