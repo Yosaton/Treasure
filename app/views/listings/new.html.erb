@@ -1,3 +1,7 @@
+
+
+
+
 <h1> Post a product !</h1>
 
 <%= form_with scope: :listing , url:listings_path, local: true do |form| %>
@@ -15,6 +19,22 @@
     <%= form.label :city, class:"listingtext" %><br>
     <%= form.text_area :city %>
   </p> 
+
+  <p>
+    <%= form.label :place, class:"listingtext" %><br>
+    <%= form.text_area :place %>
+  </p>
+
+  <p>
+    <%= form.label :latitude, class:"listingtext" %><br>
+    <%= form.text_area :latitude %>
+  </p> 
+
+  <p>
+    <%= form.label :longitude, class:"listingtext" %><br>
+    <%= form.text_area :longitude %>
+  </p> 
+
 
   <p>
     <%= form.file_field :images, multiple: true, class:"listingtext" %><br>

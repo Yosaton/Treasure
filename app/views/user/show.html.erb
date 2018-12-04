@@ -9,38 +9,37 @@
 <%# <%= link_to "Log out", logout_path, method: :delete %> 
 
 <h2> My items for rent: </h2>
+    <div class= "card-deck" style= "display:flex; justify-content: space-betweem">
+        <%@listings.each do |l|%>
+            <% if current_user.id == l.user_id %>
+                <div class = "d-inline-block">
+                    <div class="card border-dark mb-4 mr-2" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><p><%= l.title %> </p></h5>
 
- <div class= "card-deck" style= "display:flex; justify-content: space-betweem">
-    <%@listings.each do |l|%>
-        <div class = "d-inline-block">
-            <div class="card border-dark mb-4 mr-2" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><p><%= l.title %> </p></h5>
+                            <div class="card-text">
 
-                    <div class="card-text">
-
-                        <p><%= l.title %> </p>
-
-                            <%if l.images.present?%>
-                                <%l.images.each_with_index do |pic, i| %>
-                                    <%if i == 0 %>
-                                        <img class="d-block w-100" src="<%=pic.thumb.url %>" alt="First slide">
+                                    <%if l.images.present?%>
+                                        <%l.images.each_with_index do |pic, i| %>
+                                            <%if i == 0 %>
+                                                <img class="d-block w-100" src="<%=pic.thumb.url %>" alt="First slide">
+                                            <%end%>
+                                        <%end%>
                                     <%end%>
-                                <%end%>
-                            <%end%>
 
-                        <p><%= l.price %> </p>
-                        <p><%= l.city %> </p>
-                        <p>Post by:<%= l.user.first_name %> </p>
-                            <% if current_user.id == l.user_id %>
-                                <%= link_to 'Edit', edit_listing_path(l) %>
-                                <%= link_to 'Delete', listing_path(l),
-                                    method: :delete,
-                                    data: {confirm: 'Sure?'}%>
-                            <%end%>
+                                <p><%= l.price %> </p>
+                                <p><%= l.city %> </p>
+                                <p>Post by:<%= l.user.first_name %> </p>
+                                    <% if current_user.id == l.user_id %>
+                                        <%= link_to 'Edit', edit_listing_path(l) %>
+                                        <%= link_to 'Delete', listing_path(l),
+                                            method: :delete,
+                                            data: {confirm: 'Sure?'}%>
+                                    <%end%>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+        <%end%>
     <%end%>
 </div>

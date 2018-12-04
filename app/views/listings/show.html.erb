@@ -1,13 +1,29 @@
 <%# <h3> My Current Listings: </h3> %>
 
 
-
 <h1> <%=@listing.title%> </h1>
 <h2> Price: <%=@listing.price%> ringits/day </h2>
 <h2> Item owner: <%=@listing.user.first_name%> </h2>
+<h2> Area: <%=@listing.place%> </h2>
+
+    <% provide :head_tags do %>
+        <meta name='turbolinks-visit-control' content='reload'>
+            <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                initMap(<%=@listing.latitude%>, <%=@listing.longitude%>)
+            });
+            </script>
+    <% end %>
 
 
 
+    <% provide :head_tags do %>
+        <%# So that the JS function runs when the page is loaded %>
+        <meta name='turbolinks-visit-control' content='reload'>
+            <script>
+                document.addEventListener("DOMContentLoaded", initMap2);
+            </script>
+    <% end %>
 
 
 
@@ -54,3 +70,28 @@
             </div>
         </div>
 </div>
+
+
+<p>
+    <div id="map"></div>
+</p>
+
+
+<script>
+
+function initMap(lat, lng) {
+    var myCoords = new google.maps.LatLng(lat, lng);
+    var mapOptions = {
+    center: myCoords,
+    zoom: 14
+    };
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    // marker
+    var marker = new google.maps.Marker({
+    position: myCoords,
+    map: map
+});
+}
+
+</script>
