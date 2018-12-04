@@ -92,7 +92,7 @@
   function autocomplete(){
     $.ajax({
       url: '/listings',
-      type: 'POST',
+      type: 'GET',
       data: $("#city-search").serialize(), //takes the form data and authenticity toke and converts it into a standard URL
       contentType: 'application/json; charset=utf-8', // this
       dataType: 'json', //specify what type of data you're expecting back from the servers
@@ -100,6 +100,7 @@
           console.log("Something went wrong");
       },
       success: function(data) {
+        console.log(data)
         $("#list").html("");
 
         data.forEach(function(element) {
