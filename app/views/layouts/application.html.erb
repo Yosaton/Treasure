@@ -25,7 +25,7 @@
   <body>
 
 <%if logged_in?%>
-<nav class="navbar navbar-expand-md navbar-light bg-gradient-info" style="background-color:#FF8C00;">
+<nav class="navbar navbar-expand-md navbar-light bg-gradient-info" style="background-color:#c5b358;">
 
 
 <%= image_tag(asset_path('logo.jpg'), width: 42, height: 42)%>
@@ -62,8 +62,8 @@
       </li>
     </ul>
     
-    <%= form_with url: listings_path, method: :get, local:true, class: "form-inline my-2 my-lg-0", id: "city-search" do |form| %>
-      <%= form.text_field :search, list: "list", class: "form-control mr-sm-2", placeholder: "Look for item", id: "main-search"%>
+    <%= form_with url: listings_path, method: :get, local:true, class: "form-inline my-2 my-lg-3", id: "city-search" do |form| %>
+      <%= form.text_field :search, list: "list", class: "form-control mr-sm-2", placeholder: "Search by item name or city", id: "main-search"%>
         <datalist id = "list">
         </datalist>
       <%= form.submit "Search", class: "btn btn-outline-success my-2 my-sm-0"%>

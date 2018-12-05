@@ -15,9 +15,29 @@
  */
 
 body {
-  background-image: url("gold.jpg");
+  background-image: url("black.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
   font-family: "Numans", sans-serif;
+}
+
+.whiteletters > h1 {
+  color: white;
+}
+
+.whiteletters > h2 {
+  color: white;
+}
+
+.listingtext {
+  color: white;
+}
+
+.whiteletters > p {
+  color: black;
+}
+
+.whiteletters > .listingtext {
+  color: white;
 }
