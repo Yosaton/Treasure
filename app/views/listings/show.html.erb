@@ -1,10 +1,18 @@
 <%# <h3> My Current Listings: </h3> %>
 
 
-<h1> <%=@listing.title%> </h1>
-<h2> Price: <%=@listing.price%> ringits/day </h2>
-<h2> Item owner: <%=@listing.user.first_name%> </h2>
-<h2> Area: <%=@listing.place%> </h2>
+<div class="card w-25 p-3">
+  <div class="card-body">
+    <h4 class="card-title"> <%=@listing.title%> </h4>
+    <p class="card-text">Price: <%=@listing.price%> ringits/day</p>
+    <p class="card-text">Item owner: <%=@listing.user.first_name%></p>
+    <p class="card-text">Area: <%=@listing.place%></p>
+    <p class="card-text">Contact info: </h1></p>
+    <p class="card-text">Email: <%=@listing.user.email%> </h1></p>
+
+  </div>
+</div>
+
 
     <% provide :head_tags do %>
         <meta name='turbolinks-visit-control' content='reload'>
@@ -28,7 +36,7 @@
 
 
 
-<div class= "card-deck" style= "display:flex; justify-content: space-betweem">
+<div class= "card-deck mt-4" style= "display:flex; justify-content: space-betweem">
         <div class = "d-inline-block">
             <div class="card border-dark mb-4 mr-2" style="width: 18rem;">
                 <div class="card-body">
@@ -41,15 +49,16 @@
                                     <% @listing.images.each_with_index do |pic, i| %>
                                         
                                         <% if i == 0 %>
-                                            <%# image class = image tag %>
                                             <div class="carousel-item active">
-                                                <img class="d-block w-100" src="<%=pic.url %>" alt="First slide">
+                                                <%=image_tag pic.url.to_s, style: "height: 25em; width: 100%" %>
+                                                <%# <img class="d-block w-100 h-100" src="<%=pic.url %>" alt="First slide"> %>
                                             </div>
                                         <%else%>
                                             <%# image_tag and url are built in helpers %>
                                             <%# <%= image_tag l.images_url.to_s %> 
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="<%=pic.url %>" alt="Second slide">
+                                            <%=image_tag pic.url.to_s, style: "height: 25em; width: 100%" %>    
+                                                <%# <img class="d-block w-100 h-100" src="<%=pic.url %>" alt="Second slide"> %>
                                             </div>
                                         <%end%>
                                     <%end%>

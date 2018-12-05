@@ -3,7 +3,7 @@
         <div class = "d-inline-block">
             <div class="card border-dark mb-4 mr-2" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title"><p><%= l.title %> </p></h5>
+                    <h5 class="card-title"><p> <strong><%= l.title %> </strong></p></h5>
 
                     <div class="card-text">
 
@@ -16,7 +16,7 @@
                                 <%end%>
                             <%end%>
 
-                        <p><%= l.price %> </p>
+                        <p><%= l.price %> ringgits per day </p>
                         <p><%= l.city %> </p>
                         <p>Post by:<%= l.user.first_name %> </p>
                             <% if current_user.id == l.user_id %>

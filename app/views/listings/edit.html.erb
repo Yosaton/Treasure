@@ -55,47 +55,43 @@
 
 
 
+<div class = "whiteletters">
+  <h1>Choose location / edit info</h1>
+</div>
 
-<h1>Edit Listing</h1>
- 
 <%= form_with(model: @listing, local: true) do |form| %>
- 
 
- 
+ <div class = "whiteletters">
   <p>
-    <%= form.label :title %><br>
+    <%= form.label :title, class:"listingtext"%><br>
     <%= form.text_field :title %>
   </p>
  
   <p>
-    <%= form.label :address %><br>
-    <%= form.text_area :address %>
-  </p>
-
-  <p>
-    <%= form.label :price %><br>
+    <%= form.label :price, class:"listingtext" %><br>
     <%= form.text_area :price %>
   </p>
 
   <p>
-    <%= form.label :place %><br>
+    <%= form.label :place, class:"listingtext" %><br>
     <%= form.text_area :place %>
   </p>
 
   <p>
-    <%= form.label :latitude %><br>
+    <%= form.label :latitude, class:"listingtext" %><br>
     <%= form.text_area :latitude %>
   </p>
 
   <p>
-    <%= form.label :longitude %><br>
+    <%= form.label :longitude, class:"listingtext" %><br>
     <%= form.text_area :longitude %>
   </p>
   
+</div>
+
   <p>
     <div id="map2"></div>
   </p>
-  
   <p>
     <%= form.submit %>
   </p>

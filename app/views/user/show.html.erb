@@ -1,21 +1,21 @@
 
 
 
-<h1> Welcome, <%= current_user.first_name %> ! </h1>
+<div class="whiteletters"><h1> Welcome, <%= current_user.first_name %> ! </h1> </div>
 
-<%= image_tag @user.avatar_url.to_s, class:"roundpicture mb-5" %>
+<%= image_tag @user.avatar_url.to_s, class:"img-circle mb-5" %>
 
 
 <%# <%= link_to "Log out", logout_path, method: :delete %> 
 
-<h2> My items for rent: </h2>
+<div class="whiteletters"> <h1> My items for rent: </h1> </div>
     <div class= "card-deck" style= "display:flex; justify-content: space-betweem">
         <%@listings.each do |l|%>
             <% if current_user.id == l.user_id %>
                 <div class = "d-inline-block">
                     <div class="card border-dark mb-4 mr-2" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title"><p><%= l.title %> </p></h5>
+                            <h5 class="card-title"><p><strong><%= l.title %></p></strong></h5>
 
                             <div class="card-text">
 
@@ -27,9 +27,9 @@
                                         <%end%>
                                     <%end%>
 
-                                <p><%= l.price %> </p>
-                                <p><%= l.city %> </p>
-                                <p>Post by:<%= l.user.first_name %> </p>
+                                <p> Price: <%= l.price %> ringgits per day </p>
+                                <p> City: <%= l.city %> </p>
+                                <%# <p> Post by:<%= l.user.first_name %> 
                                     <% if current_user.id == l.user_id %>
                                         <%= link_to 'Edit', edit_listing_path(l) %>
                                         <%= link_to 'Delete', listing_path(l),

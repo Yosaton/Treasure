@@ -1,46 +1,35 @@
+<div class = "whiteletters">
+  <h1> Post a product !</h1>
+</div>
 
+  <%= form_with scope: :listing , url:listings_path, local: true do |form| %>
+    <div class = "whiteletters">
+        <p>
+          <%= form.label :title, class:"listingtext" %><br>
+          <%= form.text_field :title %>
+        </p>
+      
+        <p>
+          <%= form.label :price, class:"listingtext" %><br>
+          <%= form.text_area :price, placeholder: "ringits per day" %>
+        </p>
 
+        <p>
+          <%= form.label :city, class:"listingtext" %><br>
+          <%= form.text_area :city %>
+        </p> 
 
+        <p>
+          <%= form.label :area, class:"listingtext" %><br>
+          <%= form.text_area :place %>
+        </p>
 
-<h1> Post a product !</h1>
-
-<%= form_with scope: :listing , url:listings_path, local: true do |form| %>
-  <p>
-    <%= form.label :title, class:"listingtext" %><br>
-    <%= form.text_field :title %>
-  </p>
- 
-  <p>
-    <%= form.label :price, class:"listingtext" %><br>
-    <%= form.text_area :price %>
-  </p>
-
-  <p>
-    <%= form.label :city, class:"listingtext" %><br>
-    <%= form.text_area :city %>
-  </p> 
-
-  <p>
-    <%= form.label :place, class:"listingtext" %><br>
-    <%= form.text_area :place %>
-  </p>
-
-  <p>
-    <%= form.label :latitude, class:"listingtext" %><br>
-    <%= form.text_area :latitude %>
-  </p> 
-
-  <p>
-    <%= form.label :longitude, class:"listingtext" %><br>
-    <%= form.text_area :longitude %>
-  </p> 
-
-
-  <p>
-    <%= form.file_field :images, multiple: true, class:"listingtext" %><br>
-  </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+        <p>
+          <%= form.file_field :images, multiple: true, class:"listingtext" %><br>
+        </p>
+    </div>
+        <p>
+          <%= form.submit %>
+        </p>
+   
+  <% end %>
