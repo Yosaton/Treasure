@@ -17,22 +17,14 @@ RSpec.describe Listing, type: :model do
     end
     
     context "description" do
-        
         it 'takes in description with less than 5 characters' do
             @user = User.create(first_name: "bob", last_name: "rice", email: "plays@e.com", password: "shithole")
             # @listing = Listing.create(title: "steak", price: 5, city:"nashville", description: "lossaop", place:"nippers corner", user_id:@user.id)
             # expect(@listing.save).to eq(false)
             @listing = Listing.create(title: title, price: price, city: city, description: description, place:place, user_id: @user.id)
             expect(Listing.find_by(description: description)).not_to be nil
-
         end 
     end
-    
-    # context "create method" do
-    
-    
-    #     it "takes in a description that is too short" do
-    #         expect(@listing.save).to eq(false)
-    #     end
+
 end
 

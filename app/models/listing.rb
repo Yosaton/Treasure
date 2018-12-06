@@ -4,7 +4,7 @@ class Listing < ApplicationRecord
     pg_search_scope :omniscope, :against => [:title, :city]
     mount_uploaders :images, ImagesUploader
     validates :title, :price, :city, :place, presence: true
-    validates :description_length
+    validate :description_length
 
 private
 

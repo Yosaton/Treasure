@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :authentications, dependent: :destroy
     mount_uploader :avatar, AvatarUploader
     validates :email, presence:true
-    # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, uniqueness: true, 
                       length: { minimum: 2},
                       format: { with: VALID_EMAIL_REGEX}

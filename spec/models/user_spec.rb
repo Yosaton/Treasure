@@ -4,6 +4,7 @@ require 'spec_helper'
 RSpec.describe User, type: :model do
     let(:name) {User.new(first_name: "bob", email: "a@a.com", password:"shit")}
     let(:correct_email) { "bob@bob.com"}
+    let(:incorrect_email)    { 'bob@bobcom' }
 
         context "validations" do
             it { should validate_presence_of(:email) }
@@ -22,6 +23,15 @@ RSpec.describe User, type: :model do
 
     it "takes in a correct email" do
         expect{User.create(email: correct_email)}.not_to raise_error
+    end
+
+    it "takes in a correct email" do #happy
+        expect{User.create(email: correct_email)}.not_to raise_error
+    end
+
+    it "does not take an incorrect email" do #unhappy
+        User.create(email: incorrect_email)
+        expect( User.find_by(email: incorrect_email) ).to be nil
     end
 
 end
