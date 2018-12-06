@@ -18,9 +18,14 @@ class ListingsController < ApplicationController
     def create
         @listing = Listing.new(listing_params)
         @listing.user_id = current_user.id
-        @listing.save!
-        # redirect_to user_path(@listing.user.id)
-        redirect_to edit_listing_path(@listing.id)
+        
+            if @listing.save
+                redirect_to edit_listing_path(@listing.id)
+            else
+                flash[:warning]=@listing.errors.full_messages
+                render "new"
+            end
+            # redirect_to user_path(@listing.user.id)
     end
 
     def edit
@@ -49,6 +54,6 @@ class ListingsController < ApplicationController
 
     private
     def listing_params
-        params.require(:listing).permit(:title, :city, :price, :place, :latitude, :longitude, {images:[]})
+        params.require(:listing).permit(:title, :city, :price, :place, :latitude, :longitude, :description, {images:[]})
     end
 end
