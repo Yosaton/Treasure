@@ -8,20 +8,25 @@
           <%= form.label :title, class:"listingtext" %><br>
           <%= form.text_field :title %>
         </p>
+
+        <p>
+          <%= form.label :description, class:"listingtext" %><br>
+          <%= form.text_area :description %>
+        </p>
       
         <p>
           <%= form.label :price, class:"listingtext" %><br>
-          <%= form.text_area :price, placeholder: "ringits per day" %>
+          <%= form.text_field :price, placeholder: "ringits per day" %>
         </p>
 
         <p>
           <%= form.label :city, class:"listingtext" %><br>
-          <%= form.text_area :city %>
+          <%= form.text_field :city %>
         </p> 
 
         <p>
           <%= form.label :area, class:"listingtext" %><br>
-          <%= form.text_area :place %>
+          <%= form.text_field :place %>
         </p>
 
         <p>

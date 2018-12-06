@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
   <head>
     <title>Treasure</title>
     <%= csrf_meta_tags %>
@@ -75,9 +74,14 @@
 <%end%>
 
 
+<!-- THIS IS FOR FLASHING -->
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+<div class="container mt-5 mb-5">
     <%= yield %>
+</div>
   </body>
-</html>
 
 <script>
 

@@ -6,9 +6,10 @@
     <h4 class="card-title"> <%=@listing.title%> </h4>
     <p class="card-text">Price: <%=@listing.price%> ringits/day</p>
     <p class="card-text">Item owner: <%=@listing.user.first_name%></p>
+    <p class="card-text">Description: <%=@listing.description%></p>
     <p class="card-text">Area: <%=@listing.place%></p>
     <p class="card-text">Contact info: </h1></p>
-    <p class="card-text">Email: <%=@listing.user.email%> </h1></p>
+    <p class="card-text">Email: <strong> <%=@listing.user.email%> </strong> </h1></p>
 
   </div>
 </div>
@@ -22,18 +23,6 @@
             });
             </script>
     <% end %>
-
-
-
-    <% provide :head_tags do %>
-        <%# So that the JS function runs when the page is loaded %>
-        <meta name='turbolinks-visit-control' content='reload'>
-            <script>
-                document.addEventListener("DOMContentLoaded", initMap2);
-            </script>
-    <% end %>
-
-
 
 
 <div class= "card-deck mt-4" style= "display:flex; justify-content: space-betweem">
@@ -51,14 +40,14 @@
                                         <% if i == 0 %>
                                             <div class="carousel-item active">
                                                 <%=image_tag pic.url.to_s, style: "height: 25em; width: 100%" %>
-                                                <%# <img class="d-block w-100 h-100" src="<%=pic.url %>" alt="First slide"> %>
+                                                <%# <img class="d-block w-100 h-100" src="<%=pic.url %>
                                             </div>
                                         <%else%>
                                             <%# image_tag and url are built in helpers %>
                                             <%# <%= image_tag l.images_url.to_s %> 
                                             <div class="carousel-item">
                                             <%=image_tag pic.url.to_s, style: "height: 25em; width: 100%" %>    
-                                                <%# <img class="d-block w-100 h-100" src="<%=pic.url %>" alt="Second slide"> %>
+                                                <%# <img class="d-block w-100 h-100" src="<%=pic.url %>
                                             </div>
                                         <%end%>
                                     <%end%>

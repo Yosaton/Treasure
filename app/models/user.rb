@@ -1,10 +1,13 @@
 class User < ApplicationRecord
-    # has_secure_password
-    has_many :listings
+    has_many :listings, dependent: :destroy
     has_secure_password
     has_many :authentications, dependent: :destroy
-    attr_accessor :avatar
     mount_uploader :avatar, AvatarUploader
+    validates :email, presence:true
+    # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    validates :email, uniqueness: true, 
+                      length: { minimum: 2},
+                      format: { with: VALID_EMAIL_REGEX}
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
         user = self.create!(
