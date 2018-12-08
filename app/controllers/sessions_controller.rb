@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
 
-  def new
+  def new #the view page
   end
 
-  def create
+  def create #where user actualyl logs in
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
@@ -21,12 +21,15 @@ class SessionsController < ApplicationController
     flash[:success] = "Successfully Logged Out!"
     redirect_to login_path
    end
-
+  
    def create_from_omniauth
+    #requests a token // auth hash the details
+    #here our app receives all of our details of user
     auth_hash = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"]) ||  Authentication.create_with_omniauth(auth_hash)
   
     # if: previously already logged in with OAuth
+    # if theres already a user with that token
     if authentication.user
       user = authentication.user
       authentication.update_token(auth_hash)

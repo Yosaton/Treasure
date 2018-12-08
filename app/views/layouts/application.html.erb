@@ -14,7 +14,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     
-  <%= javascript_include_tag `https://maps.googleapis.com/maps/api/js?key= #{Rails.application.credentials.google_maps_api_key}` %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key= #{Rails.application.credentials.google_maps_api_key}" %>
+  <%# <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key %> %>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= yield(:head_tags) %>
   </head>
@@ -61,6 +63,7 @@
     
     <%= form_with url: listings_path, method: :get, local:true, class: "form-inline my-2 my-lg-3", id: "city-search" do |form| %>
       <%= form.text_field :search, list: "list", class: "form-control mr-sm-2", placeholder: "Search by item name or city", id: "main-search"%>
+        <%# another form of a ul %>
         <datalist id = "list">
         </datalist>
       <%= form.submit "Search", class: "btn btn-outline-success my-2 my-sm-0"%>
@@ -97,7 +100,7 @@
       error: function() {
           console.log("Something went wrong");
       },
-      success: function(data) {
+      success: function(data) { //this data is what is being sent back from listings
         console.log(data)
         $("#list").html("");
 

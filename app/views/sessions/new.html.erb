@@ -5,6 +5,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+  <%# Here we can't use @session because there is no model for session. So we just give the details directly %>
     <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :email %>
