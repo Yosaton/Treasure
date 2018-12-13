@@ -1,6 +1,7 @@
 <% provide :head_tags do %>
    <meta name='turbolinks-visit-control' content='reload'>
    <script>
+   //launch the map when page is loaded
        document.addEventListener("DOMContentLoaded", initMap2);
          function initMap2() {
            var lat = document.getElementById('listing_latitude').value;

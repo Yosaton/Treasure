@@ -1,7 +1,7 @@
 <div class= "card-deck" style= "display:flex; justify-content: space-betweem">
     <%@listings.each do |l|%>
         <div class = "d-inline-block">
-            <div class="card border-dark mb-4 mr-2" style="width: 18rem;">
+            <div class="card border-dark mb-4 mr-2" style="width: 18rem; height: 55vh;">
                 <div class="card-body">
                     <h5 class="card-title"><p> <strong><%= l.title %> </strong></p></h5>
 
@@ -11,7 +11,7 @@
                             <%if l.images.present?%>
                                 <%l.images.each_with_index do |pic, i| %>
                                     <%if i == 0 %>
-                                        <img class="d-block w-100" src="<%=pic.thumb.url %>" alt="First slide">
+                                        <img class="mx-auto d-block" src="<%=pic.thumb.url %>" alt="First slide"style="max-height: 100px; max-width: 100px;">
                                     <%end%>
                                 <%end%>
                             <%end%>
@@ -19,6 +19,7 @@
                         <p><%= l.price %> ringgits per day </p>
                         <p><%= l.city %> </p>
                         <p>Post by:<%= l.user.first_name %> </p>
+                        
                             <% if current_user.id == l.user_id %>
                                 <%= link_to 'Edit', edit_listing_path(l) %>
                                 <%= link_to 'Delete', listing_path(l),
@@ -26,11 +27,14 @@
                                     data: {confirm: 'Sure?'}%>
                             <%end%>
 
-                            <%if current_user.id != l.user_id %>
-                                <%=link_to "Rent This Item", listing_path(l.id), class: 'btn btn-primary' %>
-                            <%end%>
                     </div>
                 </div>
+
+                            <%if current_user.id != l.user_id %>
+                                <div class="card-footer">
+                                    <%=link_to "Rent This Item", listing_path(l.id), class: 'btn btn-primary d-block mx-auto' %>
+                                </div>
+                            <%end%>
             </div>
         </div>
 <%end%>

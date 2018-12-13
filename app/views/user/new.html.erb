@@ -1,37 +1,38 @@
-<h1> Signup page </h1>
+<div class = "all">
 
-<%= form_with scope: :user, :html => {:class => "col-xs-12 col-sm-12 col-md-12"}, url:user_index_path, local: true, method: :post do |form| %>
-  
-  <p>
-    <%= form.label :first_name, class:"listingtext" %><br>
-    <%= form.text_field :first_name %>
-  </p>
+  <h1> Signup page </h1>
 
-  <p>
-    <%= form.label :last_name, class:"listingtext" %><br>
-    <%= form.text_field :last_name %>
-  </p>
-  
-  <p>
-    <%= form.label :email, class:"listingtext" %><br>
-    <%= form.text_field :email %>
-  </p>
- 
-  <p>
-    <%= form.label :password, class:"listingtext" %><br>
-    <%= form.text_area :password %>
-  </p>
-
-   <p>
-    <%= form.label :phone_number, class:"listingtext" %><br>
-    <%= form.text_area :phone_number %>
-   </p>
-
-    <p> Choose profile picture! 
-        <%= form.file_field :avatar %>
+  <%= form_with scope: :user, :html => {:class => "col-xs-12 col-sm-12 col-md-12"}, url:user_index_path, local: true, method: :post do |form| %>
+    
+    <p>
+      <%= form.label :first_name, class:"listingtext" %><br>
+      <%= form.text_field :first_name %>
     </p>
 
     <p>
-        <%= form.submit class:"btn btn-success" %>
+      <%= form.label :last_name, class:"listingtext" %><br>
+      <%= form.text_field :last_name %>
     </p>
-<% end %>
+    
+    <p>
+      <%= form.label :email, class:"listingtext" %><br>
+      <%= form.text_field :email %>
+    </p>
+  
+    <p>
+      <%= form.label :password, class:"listingtext" %><br>
+      <%= form.text_area :password %>
+    </p>
+
+    <p>
+      <%= form.label :phone_number, class:"listingtext" %><br>
+      <%= form.text_area :phone_number %>
+    </p>
+
+    <p> Choose profile picture! <br></p> 
+
+      <%= form.file_field :avatar, class:"listingtext"  %><br>
+      <%= form.submit class:"btn btn-success" %>
+
+  <% end %>
+</div>

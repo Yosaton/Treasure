@@ -14,7 +14,7 @@
   </div>
 </div>
 
-
+<%# run this stuff first on the page (application.html) %>
     <% provide :head_tags do %>
         <meta name='turbolinks-visit-control' content='reload'>
             <script>
@@ -71,7 +71,9 @@
 
 
 <p>
-    <div id="map"></div>
+    <div id="map">
+    <%# map goes here %>
+    </div>
 </p>
 
 
@@ -84,7 +86,7 @@ function initMap(lat, lng) {
     zoom: 14
     };
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
+    // put the map options in map div
     // marker
     var marker = new google.maps.Marker({
     position: myCoords,

@@ -1,24 +1,25 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div class = "center">
 
-<h1>Log in</h1>
+  <h1>Log in</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  <%# Here we can't use @session because there is no model for session. So we just give the details directly %>
-    <%= form_for(:session, url: login_path) do |f| %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <%# Here we can't use @session because there is no model for session. So we just give the details directly %>
+      <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %> <br>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      <% end %>
 
-  <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
-  <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
-  
+    <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+    <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+    
+    </div>
   </div>
+
 </div>

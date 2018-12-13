@@ -8,7 +8,7 @@ RSpec.describe Listing, type: :model do
     let(:place) { 'Uptown Damansara'}
     let(:latitude) { '51.501564'}
     let(:longitude) { '-0.141944'}
-    let(:description) { 'sd'}
+    let(:description) { 'ssasa'}
 
 
     

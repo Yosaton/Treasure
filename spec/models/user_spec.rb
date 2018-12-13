@@ -21,10 +21,6 @@ RSpec.describe User, type: :model do
         expect { User.create_with_auth_and_hash}.to raise_error(ArgumentError)
     end
 
-    it "takes in a correct email" do
-        expect{User.create(email: correct_email)}.not_to raise_error
-    end
-
     it "takes in a correct email" do #happy
         expect{User.create(email: correct_email)}.not_to raise_error
     end
